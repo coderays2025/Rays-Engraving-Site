@@ -1,0 +1,191 @@
+/* prevent sideways jiggle globally */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Smooth scroll everywhere */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset every in-page anchor so it doesn't hide under the sticky navbar */
+:root {
+  --nav-height: 72px; /* tweak to your actual navbar height */
+}
+
+[id] {
+  scroll-margin-top: var(--nav-height);
+}
+
+/* If your navbar is taller on desktop, bump the offset there */
+@media (min-width: 992px) {
+  :root {
+    --nav-height: 80px; /* adjust if your desktop bar is taller */
+  }
+}
+
+/* --- brand/logo unchanged --- */
+.navbar-custom {
+  padding: 0.6rem 1rem;
+}
+
+.logo-img {
+  height: 65px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.brand-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* base link styles */
+.navbar-custom .nav-link.custom-nav-link {
+  color: #f1c40f !important; /* Gold color */
+  font-size: 18px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.25rem 0.35rem;
+  transition: transform 0.22s ease, color 0.22s ease, text-shadow 0.22s ease;
+  transform-origin: center center;
+}
+
+
+/* Default gold color and smooth transitions */
+.navbar-custom .nav-link.custom-nav-link {
+  color: #FFD700; /* Gold */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Desktop hover effect */
+@media (min-width: 992px) {
+  .navbar-custom .nav-link.custom-nav-link:hover {
+    color: #fff !important; /* Fade to white */
+    text-shadow: 
+      0 0 8px rgba(255, 255, 255, 0.6), 
+      0 0 16px rgba(255, 255, 255, 0.3), 
+      0 0 24px rgba(255, 215, 0, 0.2); /* goldish fog around it */
+    background: radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(0, 0, 0, 0) 80%
+    ); /* foggy light blending into black */
+    border-radius: 50px;
+    transform: scale(1.4); /* subtle zoom */
+    backdrop-filter: blur(80px); /* soft fog look */
+  }
+}
+
+
+/* mobile/tablet: no hover zoom or highlight boxes */
+@media (max-width: 991.98px) {
+  :root {
+    --nav-height: 350px; /* Generous height for expanded mobile navbar */
+  }
+  .navbar-custom .navbar-collapse {
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .navbar-custom .navbar-collapse::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navbar-custom .nav-link.custom-nav-link {
+    display: block;
+    margin: 0.35rem 0;
+    padding: 0.45rem 0.25rem;
+    transform: none; /* no scale on mobile */
+  }
+}
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .navbar-custom .nav-link.custom-nav-link {
+    transition: none;
+  }
+}
+
+/* ----------------------------------------------------- */
+/* GOLD SHINE ANIMATION FOR BRAND TEXT                   */
+/* ----------------------------------------------------- */
+
+/* Base: metallic gold gradient clipped to text */
+.brand-shine {
+  position: relative;
+  display: inline-block;
+
+  /* Continuous bright gold gradient - no dark sections */
+  background: linear-gradient(
+    110deg,
+    #b8860b 0%,     /* rich gold tone */
+    #d4af37 10%,    /* brighter gold */
+    #ffd700 20%,    /* vivid gold */
+    #ffed4e 30%,    /* warm highlight */
+    #fffacd 40%,    /* soft glow peak */
+    #ffed4e 50%,    /* warm highlight */
+    #ffd700 60%,    /* vivid gold */
+    #d4af37 70%,    /* brighter gold */
+    #b8860b 80%,    /* rich gold tone */
+    #d4af37 90%,    /* brighter gold */
+    #ffd700 100%    /* vivid gold */
+  );
+
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  /* Smooth infinite loop animation */
+  animation: gold-shift 6s linear infinite;
+}
+
+@keyframes gold-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes gold-shift {
+  0%   { background-position: 0% 0; }
+  50%  { background-position: 100% 0; }
+  100% { background-position: 0% 0; }
+}
+
+
+
+/* The moving bright streak */
+
+/* Optional: slow shimmer in the gold itself */
+.brand-shine {
+  animation: gold-shift 5s linear infinite;
+}
+
+@keyframes shine-sweep {
+  to { transform: translateX(45%); }
+}
+
+@keyframes gold-shift {
+  0%   { background-position: 0% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .brand-shine {
+    animation: none;
+  }
+  .brand-shine {
+    background-position: 0% 0; /* static gold */
+  }
+}
+
+

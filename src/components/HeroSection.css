@@ -1,0 +1,81 @@
+
+.hero {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* This ensures it fills the screen height */
+  height: 100vh;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.hero-content h1 {
+  font-family: 'Audiowide', sans-serif;
+  animation: slide-in-left 1.5s ease-in-out;
+}
+
+.hero-content p {
+  font-family: "Audiowide", sans-serif;
+  animation: fade-in 6s ease-in-out;
+  padding-top: 30px;
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.brand-shine {
+  font-family: 'Audiowide', sans-serif;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(
+    110deg,
+    #b8860b 0%,
+    #d4af37 10%,
+    #ffd700 20%,
+    #ffed4e 30%,
+    #fffacd 40%,
+    #ffed4e 50%,
+    #ffd700 60%,
+    #d4af37 70%,
+    #b8860b 80%,
+    #d4af37 90%,
+    #ffd700 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important; /* Added !important */
+  animation: gold-shift 6s linear infinite;
+}
+
+@keyframes gold-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}

@@ -1,38 +1,138 @@
-.App {
+/* ---------- THEME ---------- */
+:root {
+  --primary-black: #070707;
+  --dark-bg: #111;
+  --light-bg: #faf7ef;
+
+  /* Fluid type scale */
+  --fs-hero: clamp(1.75rem, 1.2rem + 2.2vw, 3rem);
+  --fs-h2:   clamp(1.25rem, 0.9rem + 1.2vw, 2rem);
+  --fs-p:    clamp(0.95rem, 0.88rem + 0.4vw, 1.125rem);
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--light-bg);
+  color: #222;
+  margin: 0;
+}
+
+/* Keep content readable on ultra-wide monitors */
+.container,
+.container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
+  max-width: 1200px; /* adjust to 1320px if you prefer wider */
+}
+
+/* Universal section rhythm */
+section {
+  padding: clamp(48px, 6vw, 96px) 0;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.75em;
+}
+
+p { font-size: var(--fs-p); line-height: 1.6; }
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+  background-color: var(--primary-black) !important;
+}
+/* .navbar a { color: #fff !important; font-weight: 500; } */
+
+/* ---------- HERO ---------- */
+.hero {
+  min-height: 70vh;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  position: relative;
+  display: grid;
+  place-items: center;
   text-align: center;
+  padding: 0 16px;
+}
+.hero-overlay {
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute; inset: 0;
+}
+.hero-content {
+  z-index: 1;
+  max-width: 760px;
+}
+.hero-content h1 { font-size: var(--fs-hero); margin-bottom: 0.5em; }
+.hero-content p  { font-size: var(--fs-p); margin-bottom: 1.25rem; }
+
+/* ---------- CARDS / FEATURE BOXES ---------- */
+.feature-card {
+  background: #fff;
+  border: none;
+  text-align: center;
+  height: 100%;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* ---------- UTILITIES ---------- */
+.btn-primary {
+  background-color: var(--primary-red);
+  border: none;
+}
+.btn-primary:hover { background-color: #a10000; }
+
+/* Make all media scale nicely */
+img, video, canvas { max-width: 100%; height: auto; display: block; }
+
+/* ---------- FOOTER ---------- */
+footer {
+  background: var(--dark-bg);
+  color: #ccc;
+  padding: 24px 0;
+  text-align: center;
+  font-size: 0.95rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* ---------- BREAKPOINT POLISH ---------- */
+
+/* ≥ 1600px: keep things from becoming too stretched */
+@media (min-width: 1600px) {
+  .container,
+  .container-xxl { max-width: 1320px; } /* widen just a touch on huge displays */
+  .hero { min-height: 65vh; } /* slightly shorter so it doesn’t feel empty */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* 1200–1599px: comfortable desktop */
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .hero { min-height: 68vh; }
 }
 
-.App-link {
-  color: #61dafb;
+/* 992–1199px: small desktop / large tablet landscape */
+@media (max-width: 1199.98px) {
+  .hero-content { padding: 0 12px; }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* 768–991px: tablet portrait/landscape */
+@media (max-width: 991.98px) {
+  .hero { min-height: 56vh; }
+  .navbar .nav-link { padding: 0.5rem 0.75rem; }
+}
+
+/* ≤ 576–767px: small phones / phones */
+@media (max-width: 767.98px) {
+  section { padding: 56px 0; }
+  .hero { min-height: 52vh; }
+  .hero-content { max-width: 92vw; }
+  h2 { font-size: var(--fs-h2); }
+}
+
+/* ≤ 375px: very small devices */
+@media (max-width: 375px) {
+  .hero { min-height: 48vh; }
+  .btn { width: 100%; }
 }
