@@ -26,12 +26,14 @@ const Header = () => {
       onToggle={setExpanded}
     >
       <Container>
-        <Navbar.Brand href="#home" onClick={(e) => handleLinkClick(e, '#home')} className="d-flex align-items-center">
-          <img src={logo} alt="Logo" className="logo-img" />
-          <span className="brand-text brand-shine ms-2">Rays Laser Marking &amp; Engraving</span>
-        </Navbar.Brand>
+        <div className="d-flex justify-content-between w-100">
+          <Navbar.Brand href="#home" onClick={(e) => handleLinkClick(e, '#home')} className="d-flex align-items-center">
+            <img src={logo} alt="Logo" className="logo-img" />
+            <span className="brand-text brand-shine ms-2">Rays Laser Marking &amp; Engraving</span>
+          </Navbar.Brand>
 
-        <Navbar.Toggle aria-controls="nav" onClick={() => setExpanded(prev => !prev)} />
+          <Navbar.Toggle aria-controls="nav" onClick={() => setExpanded(prev => !prev)} />
+        </div>
 
         <Navbar.Collapse id="nav">
           <Nav className="ms-auto align-items-center gap-3">
