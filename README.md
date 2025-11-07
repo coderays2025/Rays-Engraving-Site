@@ -1,4 +1,4 @@
-# Project Priority App
+# Rays Laser Marking & Engraving
 
 This is a modern web application designed to showcase products and services, engage customers, and facilitate quote requests. Built with React, it provides a dynamic and responsive user experience.
 
