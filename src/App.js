@@ -3,11 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Header from "./components/Header";
 import Hero from "./components/HeroSection";
-import Testimonials from "./components/TestimonialsSection";
 import Footer from "./components/Footer";
 import AboutSection from "./components/AboutSection";
 import ProductsGrid from "./components/Products";
-import Contact from "./components/ContactSection";
 import ServicesGrid from "./components/Services";
 
 
@@ -18,10 +16,7 @@ function App() {  return (
       <ServicesGrid />
       <ProductsGrid />
       <AboutSection />
-      {/* <Testimonials /> */}
-      {/* <Contact /> */}
       <Footer />
-      {/* Other components will go here */}
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "react-bootstrap";
 import "./HeroSection.css";
 import img from "../assets/hero_image.jpg";
 
