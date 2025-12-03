@@ -1,13 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap');
+
 /* ---------- THEME ---------- */
 :root {
-  --primary-black: #070707;
-  --dark-bg: #111;
-  --light-bg: #faf7ef;
+  --black: #0C0C0D;
+  --graphite: #1B1B1D;
+  --steel: #3F3F43;
+  --gold-primary: #F2C94C;
+  --gold-deep: #D4A017;
+  --gold-soft: #E5C178;
+  --white: #FFFFFF;
+  --silver: #C7C7C7;
+  --accent-blue: #00AEEF;
+  --accent-teal: #00C2A8;
+
+  --radius-lg: 22px;
+  --radius-md: 12px;
 
   /* Fluid type scale */
-  --fs-hero: clamp(1.75rem, 1.2rem + 2.2vw, 3rem);
-  --fs-h2:   clamp(1.25rem, 0.9rem + 1.2vw, 2rem);
-  --fs-p:    clamp(0.95rem, 0.88rem + 0.4vw, 1.125rem);
+  --fs-hero: clamp(2rem, 1.5rem + 2vw, 3rem);
+  --fs-h2:   clamp(1.35rem, 1rem + 1.3vw, 2.1rem);
+  --fs-p:    clamp(1rem, 0.92rem + 0.4vw, 1.15rem);
 }
 
 html, body {
@@ -15,115 +27,226 @@ html, body {
 }
 
 body {
-  font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
-  background-color: var(--light-bg);
-  color: #222;
   margin: 0;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--graphite);
+  color: var(--silver);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Keep content readable on ultra-wide monitors */
 .container,
 .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
-  max-width: 1200px; /* adjust to 1320px if you prefer wider */
+  max-width: 1200px;
 }
 
 /* Universal section rhythm */
 section {
-  padding: clamp(48px, 6vw, 96px) 0;
+  padding: clamp(56px, 6vw, 104px) 0;
+  background-color: var(--graphite);
 }
 
 h1, h2, h3 {
-  font-weight: 600;
+  font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 0.75em;
 }
 
-p { font-size: var(--fs-p); line-height: 1.6; }
+h1 { color: var(--gold-primary); font-size: var(--fs-hero); }
+h2, h3 { color: var(--white); font-size: var(--fs-h2); }
+p { font-size: var(--fs-p); color: var(--silver); }
+
+a {
+  color: var(--accent-blue);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover, a:focus { color: #2bd4ff; text-decoration: underline; }
 
 /* ---------- NAVBAR ---------- */
 .navbar {
-  background-color: var(--primary-black) !important;
+  background-color: var(--black) !important;
 }
-/* .navbar a { color: #fff !important; font-weight: 500; } */
 
 /* ---------- HERO ---------- */
 .hero {
   min-height: 70vh;
   background-size: cover;
   background-position: center;
-  color: #fff;
+  color: var(--white);
   position: relative;
   display: grid;
   place-items: center;
   text-align: center;
   padding: 0 16px;
 }
+
 .hero-overlay {
-  background-color: rgba(0, 0, 0, 0.2);
+  background: linear-gradient(180deg, rgba(12,12,13,0.55) 0%, rgba(27,27,29,0.72) 80%);
   position: absolute; inset: 0;
 }
+
 .hero-content {
   z-index: 1;
   max-width: 760px;
 }
-.hero-content h1 { font-size: var(--fs-hero); margin-bottom: 0.5em; }
-.hero-content p  { font-size: var(--fs-p); margin-bottom: 1.25rem; }
 
-/* ---------- CARDS / FEATURE BOXES ---------- */
-.feature-card {
-  background: #fff;
-  border: none;
-  text-align: center;
-  height: 100%;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+.hero-content h1 {
+  font-size: var(--fs-hero);
+  margin-bottom: 0.5em;
+  color: var(--gold-primary);
+  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.48);
 }
 
-/* ---------- UTILITIES ---------- */
+.hero-content p  {
+  font-size: var(--fs-p);
+  margin-bottom: 1.25rem;
+  color: var(--silver);
+  text-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Metallic gold shine utility */
+.brand-shine {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(
+    110deg,
+    #b8860b 0%,
+    #d4af37 10%,
+    #ffd700 20%,
+    #ffed4e 30%,
+    #fffacd 40%,
+    #ffed4e 50%,
+    #ffd700 60%,
+    #d4af37 70%,
+    #b8860b 80%,
+    #d4af37 90%,
+    #ffd700 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gold-shift 5s linear infinite;
+}
+
+@keyframes gold-shift {
+  0%   { background-position: 0% 0; }
+  50%  { background-position: 100% 0; }
+  100% { background-position: 0% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-shine {
+    animation: none;
+    background-position: 0% 0;
+  }
+}
+
+/* ---------- BUTTONS ---------- */
+.btn,
+.btn-primary,
+.btn-outline-primary {
+  font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  padding: 0.7rem 1.4rem;
+  transition: all 0.2s ease;
+}
+
 .btn-primary {
-  background-color: var(--primary-red);
-  border: none;
+  background-color: var(--gold-primary);
+  color: var(--black);
+  border: 1px solid var(--gold-primary);
 }
-.btn-primary:hover { background-color: #a10000; }
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--gold-deep);
+  border-color: var(--gold-deep);
+  color: var(--black);
+}
+
+.btn-outline-primary {
+  background: transparent;
+  color: var(--gold-primary);
+  border: 1.5px solid var(--gold-primary);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  background: var(--gold-primary);
+  color: var(--black);
+}
 
 /* Make all media scale nicely */
 img, video, canvas { max-width: 100%; height: auto; display: block; }
 
+/* ---------- CONTACT ---------- */
+.contact-section {
+  background: var(--black);
+  color: var(--silver);
+}
+
+.contact-section h2 { color: var(--gold-primary); }
+.contact-section p { color: var(--silver); }
+.contact-link { color: var(--accent-teal); text-decoration: none; }
+.contact-link:hover { color: #1be2c5; text-decoration: underline; }
+
+/* ---------- TESTIMONIALS ---------- */
+.testimonials-section {
+  background: var(--graphite);
+  color: var(--silver);
+}
+
+.testimonials-section h2 { color: var(--gold-primary); }
+.testimonial-quote {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--silver);
+}
+
+.testimonial-author {
+  color: var(--gold-soft);
+  font-weight: 600;
+}
+
 /* ---------- FOOTER ---------- */
 footer {
-  background: var(--dark-bg);
-  color: #ccc;
+  background: var(--black);
+  color: var(--silver);
   padding: 24px 0;
   text-align: center;
   font-size: 0.95rem;
 }
 
-/* ---------- BREAKPOINT POLISH ---------- */
+footer a { color: var(--gold-primary); }
+footer a:hover { color: var(--gold-deep); }
 
-/* ≥ 1600px: keep things from becoming too stretched */
+/* ---------- BREAKPOINT POLISH ---------- */
 @media (min-width: 1600px) {
   .container,
-  .container-xxl { max-width: 1320px; } /* widen just a touch on huge displays */
-  .hero { min-height: 65vh; } /* slightly shorter so it doesn’t feel empty */
+  .container-xxl { max-width: 1320px; }
+  .hero { min-height: 65vh; }
 }
 
-/* 1200–1599px: comfortable desktop */
 @media (min-width: 1200px) and (max-width: 1599px) {
   .hero { min-height: 68vh; }
 }
 
-/* 992–1199px: small desktop / large tablet landscape */
 @media (max-width: 1199.98px) {
   .hero-content { padding: 0 12px; }
 }
 
-/* 768–991px: tablet portrait/landscape */
 @media (max-width: 991.98px) {
   .hero { min-height: 56vh; }
   .navbar .nav-link { padding: 0.5rem 0.75rem; }
 }
 
-/* ≤ 576–767px: small phones / phones */
 @media (max-width: 767.98px) {
   section { padding: 56px 0; }
   .hero { min-height: 52vh; }
@@ -131,7 +254,6 @@ footer {
   h2 { font-size: var(--fs-h2); }
 }
 
-/* ≤ 375px: very small devices */
 @media (max-width: 375px) {
   .hero { min-height: 48vh; }
   .btn { width: 100%; }

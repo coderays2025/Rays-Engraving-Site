@@ -40,7 +40,13 @@ const Header = () => {
             <Nav.Link href="#home" onClick={(e) => handleLinkClick(e, '#home')} className="custom-nav-link">Home</Nav.Link>
             <Nav.Link href="#services" onClick={(e) => handleLinkClick(e, '#services')} className="custom-nav-link">Services</Nav.Link>
             <Nav.Link href="#products" onClick={(e) => handleLinkClick(e, '#products')} className="custom-nav-link">Products</Nav.Link>
-            <Nav.Link href="#about" onClick={(e) => handleLinkClick(e, '#about')} className="custom-nav-link">About Us</Nav.Link>
+            <Nav.Link
+              href="#about"
+              onClick={(e) => handleLinkClick(e, '#about')}
+              className="custom-nav-link about-link"
+            >
+              About Us
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

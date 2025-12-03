@@ -1,11 +1,7 @@
-:root {
-  --about-bg: #121212;
-}
-
 .about-section {
-  background-color: var(--about-bg);
+  background-color: var(--graphite);
   padding: 100px 0;
-  color: var(--text);
+  color: var(--silver);
   text-align: center;
 }
 
@@ -14,11 +10,17 @@
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 15px;
+  color: var(--gold-primary);
+}
+
+.about-section .brand-shine {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 .about-section .subtitle {
   font-size: 1.2rem;
-  color: var(--muted);
+  color: var(--silver);
   margin-bottom: 40px;
 }
 
@@ -31,11 +33,12 @@
   font-size: 1.1rem;
   line-height: 1.7;
   margin-bottom: 20px;
+  color: var(--silver);
 }
 
 .about-description .tagline {
   font-style: italic;
-  color: var(--gold-1);
+  color: var(--gold-soft);
   font-size: 1.2rem;
 }
 
@@ -47,30 +50,30 @@
 }
 
 .testimonial-card {
-  background-color: var(--card);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: var(--radius);
-  padding: 30px;
+  background: linear-gradient(180deg, rgba(12,12,13,0.88), rgba(27,27,29,0.88));
+  border: 1px solid rgba(242, 201, 76, 0.12);
+  border-radius: var(--radius-lg);
+  padding: 32px;
   max-width: 400px;
-  transition: transform var(--speed) ease, box-shadow var(--speed) ease;
+  transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
 .testimonial-card:hover {
   transform: translateY(-6px);
-  box-shadow: var(--elev);
+  box-shadow: 0 16px 38px rgba(0,0,0,0.42), 0 0 0 1px rgba(242, 201, 76, 0.14);
 }
 
 .testimonial-card .quote {
   font-size: 1.1rem;
   font-style: italic;
-  color: var(--muted);
+  color: var(--silver);
   margin-bottom: 15px;
 }
 
 .testimonial-card .author {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--gold-2);
+  color: var(--gold-primary);
 }
 
 /* Animation */

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Products.css';
 
 const PRODUCTS = [
@@ -28,9 +28,17 @@ const PRODUCTS = [
   }
 ];
 
-const ProductCard = ({ title, caption, image, alt, href }) => {
+const ProductCard = ({ title, caption, image, alt, href, hoveredId, setHovered, id }) => {
+  const isHovered = hoveredId === id;
+  const isDimmed = hoveredId && hoveredId !== id;
+  const cardClass = `product-card ${isHovered ? 'is-hovered' : ''} ${isDimmed ? 'is-dimmed' : ''}`;
+
   return (
-    <div className="product-card">
+    <div
+      className={cardClass}
+      onMouseEnter={() => setHovered(id)}
+      onMouseLeave={() => setHovered(null)}
+    >
       <a href={href} aria-label={title}>
         <div className="product-card-bg" style={{ backgroundImage: `url(${image})` }}></div>
         <div className="product-title-strip">
@@ -47,6 +55,8 @@ const ProductCard = ({ title, caption, image, alt, href }) => {
 };
 
 const ProductsGrid = () => {
+  const [hoveredId, setHovered] = useState(null);
+
   return (
     <section id="products" className="products-section">
       <div className="section-title text-center">
@@ -54,7 +64,13 @@ const ProductsGrid = () => {
       </div>
       <div className="products-grid">
         {PRODUCTS.map(product => (
-          <ProductCard key={product.id} {...product} />
+          <ProductCard
+            key={product.id}
+            {...product}
+            hoveredId={hoveredId}
+            setHovered={setHovered}
+            id={product.id}
+          />
         ))}
       </div>
     </section>

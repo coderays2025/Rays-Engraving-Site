@@ -11,8 +11,8 @@ function Hero() {
     >
       <div className="hero-overlay" />
       <div className="hero-content">
-        <h1 className="brand-shine"> Precision. Perfection. Engraved. </h1>
-        <p className="brand-shine">
+        <h1> Precision. Perfection. Engraved. </h1>
+        <p>
           Transforming ideas into lasting impressions through the art of precision laser engraving.
         </p>
       </div>

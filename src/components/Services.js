@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Services.css';
 
 const SERVICES = [
-  {
-    id: "precision",
-    title: "Precision Engraving & Marking",
-    caption: "High-accuracy laser marking on a wide range of materials.",
-    image: "/assets/services/precision-engraving.jpg",
-    icon: "/assets/icons/placeholder.svg",
-    alt: "Laser engraving close-up",
-    href: "/services/precision-engraving"
-  },
+  // {
+  //   id: "precision",
+  //   title: "Precision Engraving & Marking",
+  //   caption: "High-accuracy laser marking on a wide range of materials.",
+  //   image: "/assets/services/precision-engraving.jpg",
+  //   icon: "/assets/icons/placeholder.svg",
+  //   alt: "Laser engraving close-up",
+  //   href: "/services/precision-engraving"
+  // },
   {
     id: "gifts",
     title: "Custom Gifts & Personalization",
@@ -49,9 +49,17 @@ const SERVICES = [
   }
 ];
 
-const ServiceCard = ({ title, caption, image, icon, alt, href }) => {
+const ServiceCard = ({ title, caption, image, icon, alt, href, hoveredId, setHovered, id }) => {
+  const isHovered = hoveredId === id;
+  const isDimmed = hoveredId && hoveredId !== id;
+  const cardClass = `service-card ${isHovered ? 'is-hovered' : ''} ${isDimmed ? 'is-dimmed' : ''}`;
+
   return (
-    <div className="service-card">
+    <div
+      className={cardClass}
+      onMouseEnter={() => setHovered(id)}
+      onMouseLeave={() => setHovered(null)}
+    >
       <a href={href} aria-label={title}>
         <div className="card-bg" style={{ backgroundImage: image ? `url(${image})` : 'none' }}></div>
         {!image && icon && (
@@ -75,22 +83,108 @@ const ServiceCard = ({ title, caption, image, icon, alt, href }) => {
 };
 
 const ServicesGrid = () => {
+  const [hoveredId, setHovered] = useState(null);
+  const [cardsPerView, setCardsPerView] = useState(3);
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [cardStep, setCardStep] = useState(0);
+  const trackRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const updatePerView = () => {
+      const w = window.innerWidth;
+      if (w < 768) {
+        setCardsPerView(1);
+        setIsMobile(true);
+        setSlideIndex(0);
+      } else if (w < 1024) {
+        setCardsPerView(2);
+        setIsMobile(false);
+      } else {
+        setCardsPerView(3);
+        setIsMobile(false);
+      }
+    };
+    updatePerView();
+    window.addEventListener('resize', updatePerView);
+    return () => window.removeEventListener('resize', updatePerView);
+  }, []);
+
+  const maxSlide = Math.max(0, Math.ceil(SERVICES.length / cardsPerView) - 1);
+  useEffect(() => {
+    if (slideIndex > maxSlide) setSlideIndex(maxSlide);
+  }, [maxSlide, slideIndex]);
+
+  const recalcStep = () => {
+    if (!trackRef.current) return;
+    const firstCard = trackRef.current.querySelector('.service-card');
+    if (!firstCard) return;
+    const style = window.getComputedStyle(trackRef.current);
+    const gap =
+      parseFloat(style.columnGap || style.gap || '0') || 0;
+    const width = firstCard.getBoundingClientRect().width;
+    setCardStep(width + gap);
+  };
+
+  useEffect(() => {
+    recalcStep();
+    window.addEventListener('resize', recalcStep);
+    return () => window.removeEventListener('resize', recalcStep);
+  }, []);
+
+  useEffect(() => {
+    recalcStep();
+  }, [cardsPerView]);
+
+  const handleLeft = () => setSlideIndex(prev => Math.max(0, prev - 1));
+  const handleRight = () => setSlideIndex(prev => Math.min(maxSlide, prev + 1));
+  const offset = isMobile ? '0px' : `${-cardStep * slideIndex}px`;
+
   return (
     <section id="services" className="services-section">
       <div className="section-title text-center">
         <h2 className="brand-shine">Our Services</h2>
       </div>
-      <div className="services-grid">
-        <div className="services-row">
-          {SERVICES.slice(0, 3).map(service => (
-            <ServiceCard key={service.id} {...service} />
+      <div className="services-slider card-slider-viewport">
+        <div
+          className={`services-grid card-slider-track${isMobile ? ' mobile-stack' : ''}`}
+          ref={trackRef}
+          style={{
+            '--slide-offset': offset,
+            '--cards-per-view': cardsPerView,
+            transform: `translateX(${offset})`
+          }}
+        >
+          {SERVICES.map(service => (
+            <ServiceCard
+              key={service.id}
+              {...service}
+              hoveredId={hoveredId}
+              setHovered={setHovered}
+              id={service.id}
+            />
           ))}
         </div>
-        <div className="services-row justify-content-center">
-          {SERVICES.slice(3, 5).map(service => (
-            <ServiceCard key={service.id} {...service} />
-          ))}
-        </div>
+        {!isMobile && (
+          <>
+            <button
+              className="slider-arrow slider-arrow-left"
+              onClick={handleLeft}
+              disabled={slideIndex === 0}
+              aria-label="Previous services"
+            >
+              &lt;
+            </button>
+            <button
+              className="slider-arrow slider-arrow-right"
+              onClick={handleRight}
+              disabled={slideIndex === maxSlide}
+              aria-label="Next services"
+            >
+              &gt;
+            </button>
+          </>
+        )}
       </div>
     </section>
   );

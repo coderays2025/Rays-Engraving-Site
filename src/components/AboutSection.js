@@ -13,10 +13,10 @@ const AboutSection = () => {
           <p>
             At Rays Laser Marking & Engraving, we combine advanced laser technology with a craftsman’s touch 
             to create personalized, branded, and industrial engraving solutions.  
-            Our mission is simple — precision, quality, and customer satisfaction in every project we take on.
+            Our mission is simple ~ precision, quality, and customer satisfaction in every project we take on.
           </p>
           <p>
-            We work with metals, plastics, wood, and more — serving individuals, startups, and 
+            We work with metals, plastics, wood, and more ~ serving individuals, startups, and 
             industrial clients alike. Whether it’s a custom gift or a complex industrial component, 
             we treat every engraving with the same attention to detail and care.
           </p>
