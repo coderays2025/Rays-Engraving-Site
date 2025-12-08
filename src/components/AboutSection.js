@@ -11,25 +11,23 @@ const AboutSection = () => {
         </div>
         <div className="about-description">
           <p>
-            At Rays Laser Marking & Engraving, we combine advanced laser technology with a craftsman’s touch 
-            to create personalized, branded, and industrial engraving solutions.  
-            Our mission is simple ~ precision, quality, and customer satisfaction in every project we take on.
-          </p>
-          <p>
-            We work with metals, plastics, wood, and more ~ serving individuals, startups, and 
-            industrial clients alike. Whether it’s a custom gift or a complex industrial component, 
-            we treat every engraving with the same attention to detail and care.
+           At Rays Laser Marking & Engraving, we blend cutting-edge laser technology with true artisan precision to deliver personalized, branded, and industrial engraving solutions. 
+           Our mission is straightforward: deliver unmatched accuracy, exceptional quality, and total customer satisfaction in every project.</p>
+           <p>
+           We specialize in high-precision laser marking and engraving across all metal surfaces-including steel, aluminum, copper, brass, silver, gold, cast iron, and more. 
+           Beyond industrial applications, we also craft fully customized engravings for a wide range of metallic gifts such as keychains, pendants, water bottles, pens, corporate gifts, and return gifts for events and celebrations. 
+           Every piece is finished with meticulous detail, making it perfect for any occasion.
           </p>
           <p className="tagline">We believe that the smallest mark can leave the biggest impression.</p>
         </div>
         <div className="testimonials">
           <div className="testimonial-card">
             <p className="quote">“Consistent quality, quick delivery, and genuine craftsmanship.”</p>
-            <p className="author">— A trusted corporate client</p>
+            <p className="author">~ A trusted corporate client</p>
           </div>
           <div className="testimonial-card">
             <p className="quote">“The engraving detail was beyond expectations. Highly recommend.”</p>
-            <p className="author">— Individual customer</p>
+            <p className="author">~ Individual customer</p>
           </div>
         </div>
       </div>

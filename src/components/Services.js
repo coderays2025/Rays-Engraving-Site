@@ -15,7 +15,7 @@ const SERVICES = [
     id: "gifts",
     title: "Custom Gifts & Personalization",
     caption: "Transform everyday items into memorable keepsakes.",
-    image: "/assets/services/custom-personalizations.jpg",
+    image: "/assets/services/custom_personalizations.jpg",
     icon: "/assets/icons/placeholder.svg",
     alt: "Engraved gift items",
     href: "/services/custom-gifts"

@@ -5,8 +5,8 @@ const PRODUCTS = [
   {
     id: "keepsakes",
     title: "Crafted Keepsakes",
-    caption: "Engraved mugs, keychains, and leather tags made personal.",
-    image: "/assets/products/mug-tag.jpg",
+    caption: "Engraved keepsakes, keychains, and souvenirs made personal.",
+    image: "/assets/products/keepsakes.jpg",
     alt: "Crafted Keepsakes",
     href: "/products/keepsakes"
   },
@@ -14,15 +14,15 @@ const PRODUCTS = [
     id: "nameplates",
     title: "Signature Nameplates",
     caption: "Customized desk, door, and wall nameplates for homes and offices.",
-    image: "/assets/products/27.jpg",
+    image: "/assets/products/nameplate.jpg",
     alt: "Signature Nameplates",
     href: "/products/nameplates"
   },
   {
     id: "mark-series",
     title: "Precision Mark Series",
-    caption: "Industrial-grade engravings for tools, components, and control panels.",
-    image: "/assets/products/tools.jpg",
+    caption: "Industrial-grade engravings for cases, components, and materials.",
+    image: "/assets/products/precisionmark.jpg",
     alt: "Precision Mark Series",
     href: "/products/mark-series"
   }
