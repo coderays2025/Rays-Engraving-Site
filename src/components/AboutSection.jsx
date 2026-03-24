@@ -20,16 +20,6 @@ const AboutSection = () => {
           </p>
           <p className="tagline">We believe that the smallest mark can leave the biggest impression.</p>
         </div>
-        <div className="testimonials">
-          <div className="testimonial-card">
-            <p className="quote">“Consistent quality, quick delivery, and genuine craftsmanship.”</p>
-            <p className="author">~ A trusted corporate client</p>
-          </div>
-          <div className="testimonial-card">
-            <p className="quote">“The engraving detail was beyond expectations. Highly recommend.”</p>
-            <p className="author">~ Individual customer</p>
-          </div>
-        </div>
       </div>
     </section>
   );

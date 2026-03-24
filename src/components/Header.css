@@ -1,114 +1,162 @@
-/* prevent sideways jiggle globally */
-html, body {
-  overflow-x: hidden;
-}
-
-/* Smooth scroll everywhere */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Offset every in-page anchor so it doesn't hide under the sticky navbar */
-:root {
-  --nav-height: 72px;
-}
-
-[id] {
-  scroll-margin-top: var(--nav-height);
-}
-
-@media (min-width: 992px) {
-  :root { --nav-height: 80px; }
-}
-
-/* --- brand/logo unchanged --- */
+/* --- Glassmorphism Navbar Base --- */
 .navbar-custom {
-  padding: 0.75rem 1.25rem;
-  background: var(--black);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  padding: 1.25rem 0;
+  background: rgba(12, 12, 13, 0.7); /* Transparent black */
+  backdrop-filter: blur(12px); /* Glass effect */
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 1030;
 }
 
+/* --- Scrolled State (Condensed) --- */
+.navbar-scrolled {
+  padding: 0.75rem 0;
+  background: rgba(12, 12, 13, 0.95);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid var(--gold-soft);
+}
+
+/* --- Logo & Brand Styling --- */
 .logo-img {
-  height: 65px;
+  height: 50px;
   width: auto;
-  object-fit: contain;
-  border-radius: 4px;
+  transition: height 0.3s ease;
+}
+
+.navbar-scrolled .logo-img {
+  height: 42px;
 }
 
 .brand-text {
-  font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: 0.6px;
-  color: var(--gold-primary);
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 1.2; /* Adjusted only to prevent clipping of descenders */
+  display: block;
 }
 
-.brand-text.brand-shine {
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+.brand-tagline {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 2px;
 }
 
-/* base link styles */
-.navbar-custom .nav-link.custom-nav-link {
+/* --- Navigation Links --- */
+.main-nav .custom-nav-link {
+  color: var(--white) !important;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.5rem 1.25rem !important;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Hover Underline Animation */
+.main-nav .custom-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 1.25rem;
+  right: 1.25rem;
+  height: 2px;
+  background: var(--gold-primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: right;
+}
+
+.main-nav .custom-nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.main-nav .custom-nav-link:hover {
   color: var(--gold-primary) !important;
-  font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
-  font-size: 17px;
-  text-decoration: none;
-  display: inline-block;
-  padding: 0.35rem 0.5rem;
-  transition: color 0.2s ease, transform 0.2s ease, letter-spacing 0.2s ease;
-  transform-origin: center center;
 }
 
-.navbar-custom .nav-link.custom-nav-link.about-link {
-  font-size: 16px;
-  padding: 0.2rem 0.35rem;
-  line-height: 1.1;
-  white-space: nowrap;
+/* --- Dropdown Styling --- */
+.custom-nav-dropdown .dropdown-toggle {
+  color: var(--white) !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
 }
 
-@media (min-width: 992px) {
-  .navbar-custom .nav-link.custom-nav-link:hover {
-    color: var(--gold-deep) !important;
-    transform: translateY(-2px);
-    letter-spacing: 0.6px;
-  }
+.custom-nav-dropdown .dropdown-menu {
+  background: var(--black);
+  border: 1px solid var(--gold-soft);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  margin-top: 15px;
+  padding: 10px;
 }
 
+.custom-nav-dropdown .dropdown-item {
+  color: var(--silver);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 20px;
+  transition: all 0.2s ease;
+}
+
+.custom-nav-dropdown .dropdown-item:hover {
+  background: var(--gold-primary);
+  color: var(--black);
+  border-radius: 4px;
+}
+
+/* --- Call to Action Button --- */
+.btn-quote-nav {
+  background: var(--gold-primary);
+  color: var(--black);
+  border: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding: 10px 20px;
+  border-radius: 50px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.btn-quote-nav:hover {
+  background: var(--white);
+  color: var(--black);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(242, 201, 76, 0.3);
+}
+
+/* --- Hamburger Menu Icon --- */
+.navbar-toggler {
+  border: none;
+  padding: 0;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* --- Mobile Specific Fixes --- */
 @media (max-width: 991.98px) {
-  :root { --nav-height: 350px; }
-
-  .navbar-custom .navbar-collapse {
-    max-height: calc(100vh - 72px);
-    overflow-y: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  .navbar-collapse {
+    background: var(--black);
+    margin-top: 15px;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--steel);
   }
 
-  .navbar-custom .navbar-collapse::-webkit-scrollbar {
+  .main-nav .custom-nav-link {
+    padding: 10px 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .main-nav .custom-nav-link::after {
     display: none;
-  }
-
-  .navbar-custom .nav-link.custom-nav-link {
-    display: block;
-    margin: 0.35rem 0;
-    padding: 0.45rem 0.25rem;
-    transform: none;
-  }
-
-  .navbar-brand .brand-text {
-    font-size: 0.95rem;
-    white-space: normal;
-    display: block;
-    line-height: 1.2;
-  }
-  .navbar-brand .logo-img {
-    height: 50px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .navbar-custom .nav-link.custom-nav-link {
-    transition: none;
   }
 }

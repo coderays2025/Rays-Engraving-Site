@@ -1,0 +1,65 @@
+.bulk-order-modal .modal-content {
+    background-color: var(--black);
+    border: 1px solid var(--gold-soft);
+    border-radius: var(--radius-md);
+    box-shadow: 0 0 40px rgba(212, 160, 23, 0.2);
+}
+
+.bulk-order-modal .modal-header {
+    border-bottom: 1px solid var(--steel);
+    padding: 1.5rem;
+}
+
+.bulk-order-modal .modal-title {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.bulk-order-modal .modal-body {
+    padding: 2rem;
+    color: var(--silver);
+}
+
+.bulk-order-modal .subtitle {
+    color: var(--silver);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.bulk-order-modal label {
+    color: var(--gold-soft);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.bulk-order-modal .form-control {
+    background-color: var(--graphite);
+    border: 1px solid var(--steel);
+    color: var(--white);
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+}
+
+.bulk-order-modal .form-control:focus {
+    background-color: var(--graphite);
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 0 0.25rem rgba(242, 201, 76, 0.1);
+    color: var(--white);
+}
+
+.bulk-order-modal .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.bulk-order-modal .modal-header .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+    opacity: 0.8;
+}
+
+/* Custom backdrop dimming */
+.modal-backdrop.show {
+    opacity: 0.85;
+    backdrop-filter: blur(8px);
+}

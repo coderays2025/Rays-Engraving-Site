@@ -1,5 +1,7 @@
 import React from "react";
-import { Container, Button } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import RequestQuoteForm from "./RequestQuoteForm";
+import { CONTACT_INFO } from "../data/constants";
 
 function Contact() {
   return (
@@ -11,14 +13,13 @@ function Contact() {
         </p>
         <p>
           Email:{" "}
-          <a href="mailto:info@lasercraft.com" className="contact-link">
-            info@lasercraft.com
+          <a href={`mailto:${CONTACT_INFO.email}`} className="contact-link">
+            {CONTACT_INFO.email}
           </a>
         </p>
-        <p>Phone: 330-674-5900</p>
-        <Button variant="primary" href="mailto:info@lasercraft.com">
-          Request a Quote
-        </Button>
+        <p>Phone: {CONTACT_INFO.phone}</p>
+        <p>Address: {CONTACT_INFO.address}</p>
+        <RequestQuoteForm />
       </Container>
     </section>
   );
