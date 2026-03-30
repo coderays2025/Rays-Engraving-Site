@@ -50,12 +50,24 @@ const Header = () => {
 
         <Navbar.Collapse id="nav-collapse">
           <Nav className="ms-auto align-items-center main-nav">
+            {/* Shop Now Button (Desktop) */}
+            <Button 
+              href="#products" 
+              onClick={(e) => handleLinkClick(e, '#products')}
+              className="me-lg-3 btn-quote-nav d-none d-lg-flex"
+            >
+              Shop Now
+            </Button>
+
+            {/* Shop Now (Mobile) */}
+            <Nav.Link href="#products" onClick={(e) => handleLinkClick(e, '#products')} className="d-lg-none custom-nav-link text-gold-primary">
+              Shop Now
+            </Nav.Link>
+
             <Nav.Link href="#services" onClick={(e) => handleLinkClick(e, '#services')} className="custom-nav-link">Services</Nav.Link>
             <Nav.Link href="#how-it-works" onClick={(e) => handleLinkClick(e, '#how-it-works')} className="custom-nav-link">Process</Nav.Link>
-            <Nav.Link href="#gallery" onClick={(e) => handleLinkClick(e, '#gallery')} className="custom-nav-link">Portfolio</Nav.Link>
             
             <NavDropdown title="More" id="more-dropdown" className="custom-nav-dropdown">
-              <NavDropdown.Item href="#products" onClick={(e) => handleLinkClick(e, '#products')}>Products</NavDropdown.Item>
               <NavDropdown.Item href="#about" onClick={(e) => handleLinkClick(e, '#about')}>About Us</NavDropdown.Item>
               <NavDropdown.Item href="#testimonials" onClick={(e) => handleLinkClick(e, '#testimonials')}>Reviews</NavDropdown.Item>
             </NavDropdown>

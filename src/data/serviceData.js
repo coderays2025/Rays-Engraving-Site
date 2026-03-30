@@ -24,9 +24,9 @@ export const SERVICES = [
     icon: "bi-gear-wide-connected"
   },
   {
-    id: "rotary",
-    title: "Rotary Engraving",
-    description: "360-degree precision engraving on bottles, flasks, and tumblers.",
-    icon: "bi-arrow-repeat"
+    id: "sublimation",
+    title: "Vibrant Sublimation",
+    description: "Full-color printing on mugs, puzzles, and specialized coated gifts.",
+    icon: "bi-palette"
   }
 ];

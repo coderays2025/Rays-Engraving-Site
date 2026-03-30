@@ -10,9 +10,9 @@ function Hero() {
       style={{ backgroundImage: `url(${img})` }}
     >
       <div className="hero-overlay" />
-      <div className="hero-content">
-        <h1> Personalization. Perfection. Precision. </h1>
-        <p>
+      <div className="hero-content text-center">
+        <h1 className="brand-shine">Personalization. Perfection. Precision.</h1>
+        <p className="lead text-white pt-4">
           Transforming ideas into lasting impressions through the art of precision laser engraving.
         </p>
       </div>

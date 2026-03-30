@@ -6,7 +6,6 @@ import Hero from "./components/HeroSection";
 import Footer from "./components/Footer";
 import AboutSection from "./components/AboutSection";
 import ProductsGrid from "./components/Products";
-import GallerySection from "./components/GallerySection";
 import ServicesGrid from "./components/Services";
 import HowItWorksSection from "./components/HowItWorksSection";
 import Testimonials from "./components/TestimonialsSection";
@@ -21,7 +20,6 @@ function App() {  return (
       <Hero />
       <ServicesGrid />
       <ProductsGrid />
-      <GallerySection />
       <HowItWorksSection />
       <AboutSection />
       <Testimonials />

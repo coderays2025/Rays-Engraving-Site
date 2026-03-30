@@ -35,7 +35,6 @@
 }
 
 /* Masonry Layout Simulation */
-/* Using CSS Columns for a true Pinterest/Masonry effect */
 .gallery-grid-masonry {
   column-count: 3;
   column-gap: 1.5rem;
@@ -46,6 +45,7 @@
   break-inside: avoid;
   margin-bottom: 1.5rem;
   display: block;
+  cursor: pointer;
 }
 
 .gallery-card {
@@ -54,12 +54,9 @@
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-  cursor: zoom-in;
-  /* Varying height effect */
   min-height: 250px;
 }
 
-/* Create varying heights for items to look like Masonry */
 .gallery-item-wrapper:nth-child(even) .gallery-card { height: 420px; }
 .gallery-item-wrapper:nth-child(odd) .gallery-card { height: 320px; }
 .gallery-item-wrapper:nth-child(3n) .gallery-card { height: 380px; }
@@ -70,61 +67,87 @@
   background-size: cover;
   background-position: center;
   transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.gallery-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--gold-soft);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  position: relative;
 }
 
 .gallery-card:hover .gallery-image {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
-/* Simplified, elegant overlay */
+/* SUSTAINED FUNCTIONALITY: Laser Scanner Animation */
+.laser-scanner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+  box-shadow: 0 0 15px var(--gold-primary);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.gallery-card:hover .laser-scanner {
+  animation: laser-scan 2s infinite linear;
+  opacity: 1;
+}
+
+@keyframes laser-scan {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+
+/* Gallery Overlay */
 .gallery-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 40%, transparent 80%);
   display: flex;
   align-items: flex-end;
   opacity: 0;
   transition: opacity 0.4s ease;
-  padding: 1.5rem;
+  padding: 2rem;
+  z-index: 3;
 }
 
 .gallery-card:hover .gallery-overlay {
   opacity: 1;
 }
 
-.overlay-content h4 {
-  font-size: 1.1rem;
-  color: var(--gold-primary);
-  margin-bottom: 0.25rem;
-  text-transform: uppercase;
+.item-badge {
+  display: inline-block;
+  background: var(--gold-primary);
+  color: var(--black);
+  font-size: 0.65rem;
   font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
 }
 
-.overlay-content p {
-  font-size: 0.85rem;
+.overlay-content h4 {
+  font-size: 1.25rem;
   color: var(--white);
-  margin: 0;
-  opacity: 0.8;
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+}
+
+.view-more-btn {
+  display: inline-block;
+  color: var(--gold-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 @media (max-width: 991.98px) {
-  .gallery-grid-masonry {
-    column-count: 2;
-  }
+  .gallery-grid-masonry { column-count: 2; }
 }
 
 @media (max-width: 575.98px) {
-  .gallery-grid-masonry {
-    column-count: 1;
-  }
-  .gallery-item-wrapper:nth-child(n) .gallery-card { 
-    height: 350px; 
-  }
+  .gallery-grid-masonry { column-count: 1; }
+  .gallery-item-wrapper:nth-child(n) .gallery-card { height: 350px; }
 }
-
